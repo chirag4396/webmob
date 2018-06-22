@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name') }} | Blog Home</title>
+  <title>{{ config('app.name') }} @yield('title')</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -39,7 +39,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('index') }}">{{ config('app.name') }}</a>
+      <a class="navbar-brand" href="{{ route(Auth::guest() ? 'index' : 'home') }}">{{ config('app.name') }}</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>

@@ -2,26 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Blog;
-use App\Category;
 use Illuminate\Http\Request;
-
-class BlogController extends Controller
+use App\Category;
+class CategoryController extends Controller
 {
+    protected $response;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getBlogs(Request $r) {
-        if($r->cat){
-            $blogs = Category::find($r->cat)->blogs()->get();
-        }else{
-            $blogs = Blog::get();
-        }
-        return view('includes.all_blogs')->with(['blogs' => $blogs]);
-    }
-
     public function index()
     {
         //
@@ -34,7 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('create_blog')->with(['categories' => Category::get()]);
+        //
     }
 
     /**
@@ -43,18 +33,24 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        // $q = $this->changeKeys('qua_' , $r->all());
+        $cat = Category::create($r->all());
+        if ($cat) {
+            $this->response = ['msg' => 'success', 'd' => $cat->toArray()];
+        }
+
+        return $this->response;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
         //
     }
@@ -62,10 +58,10 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +70,10 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +81,10 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
         //
     }

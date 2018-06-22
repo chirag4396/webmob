@@ -8,7 +8,7 @@ class Blog extends Model
 {
 	public $primaryKey = 'id';
 
-    protected $fillable = ['blog_title', 'blog_categories', 'blog_text', 'blog_posted_at', 'blog_posted_by'];
+    protected $fillable = ['blog_title', 'blog_text', 'blog_posted_at', 'blog_posted_by'];
     
     CONST CREATED_AT = 'blog_created_at';
 

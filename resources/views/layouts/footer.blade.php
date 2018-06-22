@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
+        {{-- <ul class="list-inline text-center">
           <li class="list-inline-item">
             <a href="#">
               <span class="fa-stack fa-lg">
@@ -29,8 +29,8 @@
               </span>
             </a>
           </li>
-        </ul>
-        <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+        </ul> --}}
+        <p class="copyright text-muted">Copyright &copy; Chirag Chhuchha 2018</p>
       </div>
     </div>
   </div>
@@ -41,6 +41,13 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Custom scripts for this template -->
 <script src="{{ asset('js/clean-blog.min.js') }}"></script>
+<script type="text/javascript">
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+</script>
 @stack('footer')
 </body>
 </html>
