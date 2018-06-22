@@ -12,7 +12,7 @@
         }
 
         .full-height {
-            height: 100vh;
+            height: 80vh;
         }
 
         .flex-center {
@@ -60,6 +60,9 @@
     <div class="content">
         <div class="title m-b-md">
             {{ config('app.name') }}
+            <div >                
+                <a class="btn btn-secondary" href="{{ route('home') }}">BLogs</a>
+            </div>
         </div>
     </div>
 </div>
