@@ -31,7 +31,7 @@ class BlogController extends Controller
             if(!is_null($r->posted)){
                 $blogs->where('blog_posted_at', $r->posted);
             }
-        })->get();
+        })->orderBy('blog_posted_at', 'desc')->get();
         return view('includes.all_blogs')->with(['blogs' => $blogs]);
     }
 
